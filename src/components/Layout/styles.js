@@ -10,4 +10,8 @@ export const Header = styled.div`
   .icon {
     color: var(--yellow);
   }
+  a {
+    color: black;
+    text-decoration: none;
+  }
 `;
