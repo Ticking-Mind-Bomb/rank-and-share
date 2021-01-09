@@ -11,7 +11,7 @@ export const SeriesPage = () => {
       <h1 className="title">Pick your series</h1>
       <SeriesGrid>
         {series.map((movies) => (
-          <Link to={{ pathname: `/rank/${movies.slug}`, state: movies }}>
+          <Link to={{ pathname: `/movie-list/${movies.slug}`, state: movies }}>
             {movies.poster && <img src={`${baseImgUrl}${movies.poster}`} />}
             <h3>{movies.title}</h3>
           </Link>

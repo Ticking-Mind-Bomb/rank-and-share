@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { MovieCard } from "../MovieCard";
-import { MovieListGrid } from "./styles";
+import { MovieListGrid, MovieListHeader, MovieListButton } from "./styles";
 
-export const RankPage = (props) => {
+export const MovieListPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [moviesList, setMoviesList] = useState([]);
   const movies = props.location.state;
@@ -26,7 +26,11 @@ export const RankPage = (props) => {
       {loading && <h3>Loading...</h3>}
       {!loading && movies && (
         <div>
-          <h1>How will you rank the {movies.title}?</h1>
+          <MovieListHeader>
+            <MovieListButton>Start Ranking</MovieListButton>
+            <h4>or</h4>
+            <h2>Check out the movies in this series</h2>
+          </MovieListHeader>
           <div>
             <MovieListGrid>
               {moviesList.map((movie) => (
