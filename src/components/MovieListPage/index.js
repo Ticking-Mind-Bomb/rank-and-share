@@ -27,7 +27,14 @@ export const MovieListPage = (props) => {
       {!loading && movies && (
         <div>
           <MovieListHeader>
-            <MovieListButton>Start Ranking</MovieListButton>
+            <MovieListButton
+              to={{
+                pathname: `/rank/${movies.slug}`,
+                state: { moviesList: moviesList },
+              }}
+            >
+              Start Ranking
+            </MovieListButton>
             <h4>or</h4>
             <h2>Check out the movies in this series</h2>
           </MovieListHeader>
