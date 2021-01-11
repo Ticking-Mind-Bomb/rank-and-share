@@ -15,6 +15,8 @@ export const RankPage = (props) => {
   const handleClick = (e, movie) => {
     if (movie.ranked) {
       console.log("you've already ranked this");
+      movie.ranked = false;
+      movie.userRanking = null;
     } else {
       const ranked = [];
       ranked.push(movie.title);
