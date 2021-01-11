@@ -1,6 +1,6 @@
 import React from "react";
 
-export const MoviePoster = ({ movie }) => {
+export const MoviePoster = ({ movie, ranked, ranking }) => {
   const baseImgUrl = "https://image.tmdb.org/t/p/w185/";
   return (
     <div>

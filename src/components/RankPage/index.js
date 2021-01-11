@@ -13,12 +13,16 @@ export const RankPage = (props) => {
   const [rankedList, setRankedList] = useState([]);
 
   const handleClick = (e, movie) => {
-    const ranked = [];
-    ranked.push(movie.title);
-    setRankedList((prevState) => [...prevState, ...ranked]);
-    movie.userRanking = rankedList.length + 1;
-    movie.ranked = true;
-    console.log(movie);
+    if (movie.ranked) {
+      console.log("you've already ranked this");
+    } else {
+      const ranked = [];
+      ranked.push(movie.title);
+      setRankedList((prevState) => [...prevState, ...ranked]);
+      movie.userRanking = rankedList.length + 1;
+      movie.ranked = true;
+      console.log(movie);
+    }
   };
 
   return (
