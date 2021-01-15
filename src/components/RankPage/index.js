@@ -9,21 +9,35 @@ import {
 import { MoviePoster } from "../MoviePoster";
 
 export const RankPage = (props) => {
-  const { moviesList } = props.location.state;
+  const [moviesList, setMoviesList] = useState(props.location.state.moviesList);
   const [rankedList, setRankedList] = useState([]);
 
-  const handleClick = (e, movie) => {
-    if (movie.ranked) {
-      console.log("you've already ranked this");
-      movie.ranked = false;
+  const handleClick = (movie) => {
+    if (movie.userRanking) {
+      const newMoviesList = moviesList.map((listMovie) => {
+        if (listMovie.userRanking > movie.userRanking) {
+          const newRanking = listMovie.userRanking - 1;
+          listMovie.userRanking = newRanking;
+          return listMovie;
+        } else {
+          return listMovie;
+        }
+      });
+
       movie.userRanking = null;
+
+      setMoviesList(newMoviesList);
+
+      const newRankedArray = rankedList.filter(
+        (rankedMovie) => rankedMovie !== movie.title
+      );
+
+      setRankedList(newRankedArray);
     } else {
       const ranked = [];
       ranked.push(movie.title);
       setRankedList((prevState) => [...prevState, ...ranked]);
       movie.userRanking = rankedList.length + 1;
-      movie.ranked = true;
-      console.log(movie);
     }
   };
 
@@ -34,15 +48,11 @@ export const RankPage = (props) => {
         <MoviePosterGrid>
           {moviesList.map((movie) => {
             return (
-              <div
-                onClick={(e) => {
-                  handleClick(e, movie);
-                }}
-              >
+              <div>
                 <MoviePoster
+                  key={movie.id}
+                  handleClick={handleClick}
                   movie={movie}
-                  ranked={movie.ranked}
-                  ranking={movie.userRanking}
                 />
               </div>
             );

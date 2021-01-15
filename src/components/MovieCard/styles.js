@@ -7,15 +7,16 @@ export const CardWrapper = styled.div`
 `;
 
 export const CardGrid = styled.div`
-  /* display: grid;
+  display: grid;
   grid-template-columns: 1fr 2fr;
+  gap: 1rem;
   align-items: center;
-  justify-items: center; */
+  justify-items: center;
 `;
 
 export const MovieInfo = styled.div`
-  /* .info-grid {
+  .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-  } */
+    grid-template-columns: 1fr 2fr;
+  }
 `;
