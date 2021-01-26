@@ -5,3 +5,5 @@ export * from "./MovieListPage";
 export * from "./MovieCard";
 export * from "./RankPage";
 export * from "./MoviePoster";
+export * from "./SignUp";
+export * from "./Button";
