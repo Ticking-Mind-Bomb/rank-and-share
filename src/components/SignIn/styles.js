@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "../Button";
 import { Link } from "react-router-dom";
 
-export const SignUpPageWrapper = styled.div`
+export const SignInPageWrapper = styled.div`
   display: grid;
   gap: 16px;
   place-items: center;
@@ -15,7 +15,7 @@ export const FormContainer = styled.div`
   border-radius: 15px;
 `;
 
-export const SignUpForm = styled.form`
+export const SignInForm = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
@@ -27,18 +27,10 @@ export const SignUpForm = styled.form`
     border: 1px solid hsla(0, 0%, 0%, 0.2);
     border-radius: 5px;
   }
-
-  .wide {
-    grid-column: 1 / span 2;
-  }
 `;
 
-export const SignUpButton = styled(Button)`
-  margin: 0 auto;
-  border: none;
-  border-radius: 5px;
+export const SignInButton = styled(Button)`
   grid-column: 1 / span 2;
-  width: 100%;
   background-color: ${(props) => (props.disabled ? "grey" : "var(--yellow)")};
   cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
   &:hover {
@@ -47,7 +39,7 @@ export const SignUpButton = styled(Button)`
   }
 `;
 
-export const SignInLink = styled(Link)`
+export const SignUpLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   font-size: 12px;

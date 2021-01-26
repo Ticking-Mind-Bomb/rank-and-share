@@ -8,7 +8,7 @@ export const LandingPage = () => {
     <LandingWrapper>
       <h1>The best place to rank your favorite movie series</h1>
       <ButtonDiv>
-        <LandingButton>Login</LandingButton>
+        <LandingButton to={ROUTES.SIGN_IN}>Login</LandingButton>
         <LandingButton to={ROUTES.SIGN_UP}>Sign up</LandingButton>
       </ButtonDiv>
     </LandingWrapper>

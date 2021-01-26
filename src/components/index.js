@@ -7,3 +7,4 @@ export * from "./RankPage";
 export * from "./MoviePoster";
 export * from "./SignUp";
 export * from "./Button";
+export * from "./SignIn";

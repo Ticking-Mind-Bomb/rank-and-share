@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardWrapper, CardGrid, MovieInfo } from "./styles";
 import { IoThumbsUpSharp, IoThumbsDownSharp } from "react-icons/io5";
 
