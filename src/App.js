@@ -8,7 +8,9 @@ import {
   RankPage,
   SignUp,
   SignIn,
+  Dashboard,
 } from "./components";
+import PrivateRoute from "./components/PrivateRoute";
 
 import * as ROUTES from "./constants/routes";
 
@@ -23,6 +25,7 @@ function App() {
         <Route path={ROUTES.RANK_PAGE} component={RankPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUp} />
         <Route path={ROUTES.SIGN_IN} component={SignIn} />
+        <PrivateRoute path={ROUTES.DASHBOARD} component={Dashboard} />
       </Layout>
     </div>
   );

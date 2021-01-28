@@ -6,13 +6,13 @@ import {
   SignUpButton,
   SignInLink,
 } from "./styles";
-import { useFirebase } from "../../context/FirebaseContext";
+import { useAuth } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 
 import * as ROUTES from "../../constants/routes";
 
 export const SignUp = () => {
-  const firebase = useFirebase();
+  const { handleSignup } = useAuth();
   const history = useHistory();
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
@@ -48,15 +48,19 @@ export const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    firebase
-      .doCreateUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
+    handleSignup(email, password)
+      .then((result) => {
+        return result.user.updateProfile({
+          displayName: `${first} ${last}`,
+        });
+      })
+      .then(() => {
         setFirst("");
         setLast("");
         setEmail("");
         setPassword("");
         setVerifyPassword("");
-        history.push(ROUTES.LANDING);
+        history.push(ROUTES.DASHBOARD);
       })
       .catch((error) => {
         setError(error);

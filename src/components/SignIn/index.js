@@ -6,12 +6,17 @@ import {
   SignInButton,
   SignUpLink,
 } from "./styles";
+import { useAuth } from "../../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 import * as ROUTES from "../../constants/routes";
 
 export const SignIn = () => {
+  const history = useHistory();
+  const { handleLogin } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleInput = (e) => {
     switch (e.target.name) {
@@ -26,13 +31,41 @@ export const SignIn = () => {
     }
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   handleLogin(email, password)
+  //     .then(() => {
+  //       setPassword("");
+  //       setEmail("");
+  //     })
+  //     .then(() => {
+  //       history.push(ROUTES.DASHBOARD);
+  //     })
+  //     .catch((error) => {
+  //       setError(error);
+  //     });
+  // };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      await handleLogin(email, password);
+      setPassword("");
+      setEmail("");
+      history.push(ROUTES.DASHBOARD);
+    } catch (error) {
+      setError(error);
+    }
+  }
+
   const isInvalid = email === "" || password === "";
 
   return (
     <SignInPageWrapper>
       <h1>Sign in to see your profile</h1>
       <FormContainer>
-        <SignInForm>
+        <SignInForm onSubmit={handleSubmit}>
           <input
             name="email"
             type="text"
@@ -48,6 +81,7 @@ export const SignIn = () => {
             onChange={handleInput}
           />
           <SignInButton disabled={isInvalid}>Sign In</SignInButton>
+          {!!error && <p>{error.message}</p>}
         </SignInForm>
       </FormContainer>
       <SignUpLink to={ROUTES.SIGN_UP}>

@@ -2,14 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-import Firebase from "./context/Firebase";
-import FirebaseContext from "./context/FirebaseContext";
+import AuthContextProvider from "./context/AuthContext";
 
 ReactDOM.render(
   <Router>
-    <FirebaseContext.Provider value={new Firebase()}>
+    <AuthContextProvider>
       <App />
-    </FirebaseContext.Provider>
+    </AuthContextProvider>
   </Router>,
   document.getElementById("root")
 );

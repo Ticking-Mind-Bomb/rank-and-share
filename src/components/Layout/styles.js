@@ -15,3 +15,9 @@ export const Header = styled.div`
     text-decoration: none;
   }
 `;
+
+export const NavContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
