@@ -9,6 +9,7 @@ import {
   SignUp,
   SignIn,
   Dashboard,
+  Profile,
 } from "./components";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path={ROUTES.SIGN_UP} component={SignUp} />
         <Route path={ROUTES.SIGN_IN} component={SignIn} />
         <PrivateRoute path={ROUTES.DASHBOARD} component={Dashboard} />
+        <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
       </Layout>
     </div>
   );

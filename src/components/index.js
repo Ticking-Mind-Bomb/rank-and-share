@@ -9,3 +9,4 @@ export * from "./SignUp";
 export * from "./Button";
 export * from "./SignIn";
 export * from "./Dashboard";
+export * from "./Profile";
